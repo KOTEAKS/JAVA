@@ -1,0 +1,52 @@
+package Examples;
+
+import java.util.Arrays;
+
+/**
+ * Created by taegsu on 2016. 10. 19..
+ */
+
+public class Student extends Person {
+
+    private int numCourses;
+    private String[] courses; //new String[];
+    private int[] grades; //new int[];
+    private static final int MAX_COURSES = 30;
+
+    public Student(String name, String address)
+    {
+        super(name, address);
+        numCourses = 0;
+        courses = new String[MAX_COURSES];
+        grades = new int[MAX_COURSES];
+    }
+
+    public void addCoursesGrade(String course, int grade)
+    {
+        this.courses[numCourses] = course;
+        this.grades[numCourses] = grade;
+        ++numCourses;
+    }
+
+    public void printGrades()
+    {
+       for(int i = 0; i < numCourses; i++) {
+           System.out.printf(courses[i] + ":" + grades[i] + " ");
+       }
+       System.out.println();
+    }
+
+    public double getAverageGrade()
+    {
+        int sum = 0;
+        for(int i = 0; i < numCourses; i++) {
+            sum += grades[i];
+        }
+        return (double) sum / numCourses;
+    }
+
+    public String toString()
+    {
+        return "Student : " + super.toString();
+    }
+}
